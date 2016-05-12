@@ -31,7 +31,7 @@ In JavaScript, the invocation context (`this` value) is bounded when the functio
 >
 >JavaScript: The Definitive Guide (ch.8.2)
 
-That is why in some situations `this` could be *lost*:
+That is why in some situations, `this` may appear to be *something else*:
 
 ```js
 var Timer = function() {
@@ -48,9 +48,9 @@ var Timer = function() {
 var timer = new Timer();
 timer.start(2000);
 ```
-In this example, the timer displays `undefined`. And that's the correct behaviour ... although we want it to do something else! And the mistake arises with the position of `this` in the code, ie. its lexical position, and the fact that `this` is the **invocation context**.
+In this example, the timer (after 1 second) displays `undefined`. And that's the **correct** behaviour ... although we want it to do something else! And the mistake arises with the position of `this` in the code, ie. its lexical position, and the fact that `this` is the **invocation context**.
 
-The solution to this *problem* was to declare a new variable, assign the context to that variable and then, thanks to JavaScript closures (JavaScript: The Definitive Guide, ch.8.6), the variable (ie. the context that we want) can be accessed when the function is invoked
+The solution to this *binding problem* is to declare a new variable, assign the context to that variable and then, thanks to JavaScript closures (JavaScript: The Definitive Guide, ch.8.6), the variable (ie. the context that we want) can be accessed when the function is invoked
 
 ```js
 var TimerFixed = function() {
@@ -69,7 +69,7 @@ var timerFixed = new TimerFixed();
 timerFixed.start(2000);
 ```
 
-Now in ECMAScript6 we could use an **arrow function** to avoid this situation:
+Now in ECMAScript6 we could use an **arrow function**:
 ```js
 var Timer2 = function() {
   return {
@@ -84,5 +84,7 @@ var Timer2 = function() {
 var timer2 = new Timer2();
 timer2.start(1000);
 ```
+As we can see in the above example, the arrow function bound `this` to the enclosing context, ie. now we have a lexical this.
 
 ## Lexical arguments
+*work in progress ...*
