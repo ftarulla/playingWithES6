@@ -1,3 +1,6 @@
+
+![alt text](https://raw.githubusercontent.com/ftarulla/playingWithES6/master/resources/walpaper-Green-Arrow-Wallpaper-HD3891-with-Green-Arrow-Wallpaper-HD3891.jpg "Arrow Functions")
+
 # Arrow Functions
 JavaScript *is* (and *always was*) all about objects.
 Everything is an object and in this particular case __functions are objects__.
