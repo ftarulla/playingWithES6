@@ -81,7 +81,7 @@ var Timer = function() {
   };
 };
 var timer = new Timer();
-timer.start(1000);
+timer.start(1);
 
 var TimerFixed = function() {
   return {
@@ -95,7 +95,7 @@ var TimerFixed = function() {
   };
 };
 var timerFixed = new TimerFixed();
-timerFixed.start(1000);
+timerFixed.start(1);
 
 var Timer2 = function() {
   return {
@@ -108,10 +108,19 @@ var Timer2 = function() {
   };
 };
 var timer2 = new Timer2();
-timer2.start(1000);
+timer2.start(1);
 
 
 /*******************************************************************************
  * And what about the arguments?
- *
  */
+var foo = function() {
+  console.log("Arguments of foo:");
+  console.log(arguments); // { '0': 'hello', '1': 'world', '2': 123 }
+
+  ((n) => {
+    console.log("Arguments of inner anonymous function:");
+    console.log(arguments); // { '0': 'hello', '1': 'world', '2': 123 }
+  })(42);
+}
+foo('hello', 'world', 123);

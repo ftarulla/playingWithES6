@@ -50,7 +50,7 @@ timer.start(2000);
 ```
 In this example, the timer (after 1 second) displays `undefined`. And that's the **correct** behaviour ... although we want it to do something else! And the mistake arises with the position of `this` in the code, ie. its lexical position, and the fact that `this` is the **invocation context**.
 
-The solution to this *binding problem* is to declare a new variable, assign the context to that variable and then, thanks to JavaScript closures (JavaScript: The Definitive Guide, ch.8.6), the variable (ie. the context that we want) can be accessed when the function is invoked
+The solution to this *binding problem* is to declare a new variable, assign the context to that variable and then, thanks to JavaScript closures (JavaScript: The Definitive Guide, ch.8.6), the variable (ie. the context that we want) can be accessed when the function is invoked.
 
 ```js
 var TimerFixed = function() {
@@ -87,4 +87,22 @@ timer2.start(1000);
 As we can see in the above example, the arrow function bound `this` to the enclosing context, ie. now we have a lexical this.
 
 ## Lexical arguments
-*work in progress ...*
+Being consistent with `this`, the arguments variable is a reference to the arguments' object of the enclosing scope. Let's see an example:
+```js
+var foo = function() {
+  console.log("Arguments of foo:");
+  console.log(arguments); // { '0': 'hello', '1': 'world', '2': 123 }
+
+  ((n) => {
+    console.log("Arguments of inner anonymous function:");
+    console.log(arguments); // { '0': 'hello', '1': 'world', '2': 123 }
+  })(42);
+}
+foo('hello', 'world', 123);
+```
+
+##References
+* __You-Dont-Know-JS__
+https://github.com/getify/You-Dont-Know-JS/blob/master/es6%20&%20beyond/ch2.md
+* __Mozilla Developer Network__
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
