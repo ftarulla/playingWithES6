@@ -2,7 +2,7 @@
 
 Just playing with ECMAScript 6 ... just for fun!! :)
 
-Compiling with Babel
+Compile with Babel
 --------------------
 
 1. npm run build
